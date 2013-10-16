@@ -12,7 +12,7 @@ class HeaderView extends Backbone.View
   showAsterisk: (e) ->
     @trigger(
       'update-swagger-ui'
-      {discoveryUrl:"http://localhost:8088/ari/api-docs/resources.json", apiKey:""}
+      {discoveryUrl:"http://localhost:8088/ari/api-docs/resources.json"}
     )
 
   showCustomOnKeyup: (e) ->
@@ -22,10 +22,10 @@ class HeaderView extends Backbone.View
     e?.preventDefault()
     @trigger(
       'update-swagger-ui'
-      {discoveryUrl: $('#input_baseUrl').val(), apiKey: $('#input_apiKey').val()}
+      {url: $('#input_baseUrl').val(), apiKey: $('#input_apiKey').val()}
     )
 
   update: (url, apiKey, trigger = false) ->
     $('#input_baseUrl').val url
-    $('#input_apiKey').val apiKey
-    @trigger 'update-swagger-ui', {discoveryUrl:url, apiKey:apiKey} if trigger
+    #$('#input_apiKey').val apiKey
+    @trigger 'update-swagger-ui', {url:url} if trigger
